@@ -247,9 +247,9 @@ def lossfun(x, alpha, scale, approximate=False, epsilon=1e-6):
 def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
   with tf.name_scope("robust_loss"):
     check_dimensions(d_real, d_fake, d_real_logits, d_fake_logits)
-    alpha = np.float64(
+    alpha = np.float32(
       np.round(np.random.uniform(-16, 3) * 10) / 10.)
-    scale = np.float64(
+    scale = np.float32(
       np.exp(np.random.normal(size=None) * 4.) + 1e-5)
     d_loss_real = lossfun(d_real_logits,alpha,scale)
     d_loss_fake = lossfun(d_fake_logits,alpha,scale)
