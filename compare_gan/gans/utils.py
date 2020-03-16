@@ -52,3 +52,15 @@ def rotate_images(images, rot90_scalars=(0, 1, 2, 3)):
 
 def gaussian(batch_size, n_dim, mean=0., var=1.):
   return np.random.normal(mean, var, (batch_size, n_dim)).astype(np.float32)
+
+
+def log1p_safe(x):
+  """The same as tf.math.log1p(x), but clamps the input to prevent NaNs."""
+  return tf.math.log1p(tf.minimum(x, tf.cast(3e37, x.dtype)))
+
+
+def expm1_safe(x):
+  """The same as tf.math.expm1(x), but clamps the input to prevent NaNs."""
+  return tf.math.expm1(tf.minimum(x, tf.cast(87.5, x.dtype)))
+
+
