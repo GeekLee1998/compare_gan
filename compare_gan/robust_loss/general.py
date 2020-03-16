@@ -20,7 +20,7 @@ hand-tuned ones) and return a loss. For an adaptive loss, look at adaptive.py
 or distribution.py.
 """
 
-import tensorflow.compat.v2 as tf
+import tensorflow as tf
 import numpy as np
 from robust_loss import util
 
