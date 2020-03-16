@@ -19,7 +19,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from compare_gan import utils
+from compare_gan.gans import utils
 import numpy as np
 import gin
 import tensorflow as tf
