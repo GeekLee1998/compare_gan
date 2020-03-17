@@ -155,10 +155,11 @@ def hinge(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
 def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
   with tf.name_scope("robust_loss"):
     check_dimensions(d_real, d_fake, d_real_logits, d_fake_logits)
-    alpha = np.float32(
-      np.round(np.random.uniform(-16, 3) * 10) / 10.)
+    #alpha = np.float32(
+      #np.round(np.random.uniform(-16, 3) * 10) / 10.)
     #scale = np.float32(
       #np.exp(np.random.normal(size=None) * 4.) + 1e-5)
+    alpha = np.round(np.random.uniform(-16, 3))
     d_loss_real = general.lossfun(d_real_logits,alpha,0.5)
     d_loss_fake = general.lossfun(d_fake_logits,alpha,0.5)
     d_loss = d_loss_real + d_loss_fake
