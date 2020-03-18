@@ -159,8 +159,8 @@ def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
       #np.round(np.random.uniform(-16, 3) * 10) / 10.)
     #scale = np.float32(
       #np.exp(np.random.normal(size=None) * 4.) + 1e-5)
-    d_loss_real = general.lossfun(d_real_logits,1,0.5)
-    d_loss_fake = general.lossfun(d_fake_logits,1,0.5)
+    d_loss_real = general.lossfun(d_real_logits,1.0,0.5)
+    d_loss_fake = general.lossfun(d_fake_logits,1.0,0.5)
     d_loss = d_loss_real + d_loss_fake
     g_loss = d_loss_fake
     return d_loss, d_loss_real, d_loss_fake, g_loss
