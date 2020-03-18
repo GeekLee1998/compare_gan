@@ -162,7 +162,7 @@ def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
     d_loss_real = general.lossfun(d_real_logits,1.0,0.5)
     d_loss_fake = general.lossfun(d_fake_logits,1.0,0.5)
     d_loss = d_loss_real + d_loss_fake
-    g_loss = d_loss_fake
+    g_loss = general.lossfun(d_fake_logits,1.0,0.5)
     return d_loss, d_loss_real, d_loss_fake, g_loss
 
 @gin.configurable("loss", whitelist=["fn"])
