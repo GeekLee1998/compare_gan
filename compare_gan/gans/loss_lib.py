@@ -20,7 +20,7 @@ from __future__ import division
 from __future__ import print_function
 
 from compare_gan import utils
-from robust_loss import general
+from compare_gan.robust_loss import general
 
 import numpy as np
 import gin
@@ -156,10 +156,10 @@ def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
   with tf.name_scope("robust_loss"):
     check_dimensions(d_real, d_fake, d_real_logits, d_fake_logits)
     #alpha = tf.ones([64, 1], tf.float32)
-    d_loss_real = general.lossfun(d_real_logits,2,0.1)
-    d_loss_fake = general.lossfun(d_fake_logits,2,0.1)
+    d_loss_real = general.lossfun(d_real_logits,2,0.5)
+    d_loss_fake = general.lossfun(d_fake_logits,2,0.5)
     d_loss = d_loss_real + d_loss_fake
-    g_loss = general.lossfun(d_fake_logits,2,0.1)
+    g_loss = d_loss_fake
     return d_loss, d_loss_real, d_loss_fake, g_loss
 
 @gin.configurable("loss", whitelist=["fn"])
