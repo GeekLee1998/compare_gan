@@ -156,8 +156,8 @@ def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
   with tf.name_scope("robust_loss"):
     check_dimensions(d_real, d_fake, d_real_logits, d_fake_logits)
     #alpha = tf.ones([64, 1], tf.float32)
-    d_loss_real = general.lossfun(d_real_logits,1,0.5)
-    d_loss_fake = general.lossfun(d_fake_logits,1,0.5)
+    d_loss_real = general.lossfun(d_real_logits,0,0.5)
+    d_loss_fake = general.lossfun(d_fake_logits,0,0.5)
     d_loss = d_loss_real + d_loss_fake
     g_loss = d_loss_fake
     return d_loss, d_loss_real, d_loss_fake, g_loss
