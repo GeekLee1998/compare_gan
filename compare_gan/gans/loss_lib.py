@@ -152,7 +152,7 @@ def hinge(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
 
 
 @gin.configurable(whitelist=[])
-def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
+def robust(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
   with tf.name_scope("robust_loss"):
     check_dimensions(d_real, d_fake, d_real_logits, d_fake_logits)
     #alpha = tf.ones([64,1],tf.float32)
@@ -162,6 +162,7 @@ def robust_loss(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
     d_loss = d_loss_real + d_loss_fake
     g_loss = d_loss_fake
     return d_loss, d_loss_real, d_loss_fake, g_loss
+
 
 @gin.configurable("loss", whitelist=["fn"])
 def get_losses(fn=non_saturating, **kwargs):
