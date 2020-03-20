@@ -69,7 +69,6 @@ def non_saturating(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
   """
   with tf.name_scope("non_saturating_loss"):
     check_dimensions(d_real, d_fake, d_real_logits, d_fake_logits)
-    print(type(d_real_logits))
     d_loss_real = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
         logits=d_real_logits, labels=tf.ones_like(d_real_logits),
         name="cross_entropy_d_real"))
@@ -80,7 +79,7 @@ def non_saturating(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
     g_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
         logits=d_fake_logits, labels=tf.ones_like(d_fake_logits),
         name="cross_entropy_g"))
-    d_loss.shape
+    print("The d_loss shape is" + np.shape(d_loss))
     return d_loss, d_loss_real, d_loss_fake, g_loss
 
 
