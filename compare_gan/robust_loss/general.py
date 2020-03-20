@@ -118,4 +118,6 @@ def lossfun(x, alpha, scale, approximate=False, epsilon=1e-6):
                       tf.equal(alpha, tf.cast(float('inf'), float_dtype)),
                       loss_posinf, loss_otherwise))))
 
+      loss = tf.reduce_mean(loss,keep_dims=False,name="reshape loss")
+      
     return loss
