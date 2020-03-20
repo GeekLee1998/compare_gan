@@ -79,9 +79,8 @@ def non_saturating(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
     g_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
         logits=d_fake_logits, labels=tf.ones_like(d_fake_logits),
         name="cross_entropy_g"))
-    d_loss_shape = tf.shape(d_loss)
-    sess = tf.Session()
-    print(sess.run(d_loss_shape))
+    d_loss_shape = d_loss.get_shape()
+    print(d_loss_shape.num_elements())
     return d_loss, d_loss_real, d_loss_fake, g_loss
 
 
