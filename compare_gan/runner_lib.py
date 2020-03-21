@@ -198,8 +198,9 @@ class TaskManagerWithCsvResults(TaskManager):
         os.path.join(self.model_dir, "operative_config-*.gin"))
     get_step = lambda fn: int(re.findall(r"operative_config-(\d+).gin", fn)[0])
     config_steps = [get_step(fn) for fn in saved_configs]
+    step_int = int(step)
     assert config_steps
-    last_config_step = sorted([s for s in config_steps if s <= step])[-1]
+    last_config_step = sorted([s for s in config_steps if s <= step_int])[-1]
     config_path = os.path.join(
         self.model_dir, "operative_config-{}.gin".format(last_config_step))
     return _parse_gin_config(config_path)
