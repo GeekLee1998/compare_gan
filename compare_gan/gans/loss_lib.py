@@ -98,7 +98,7 @@ def wasserstein(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
   """
   with tf.name_scope("wasserstein_loss"):
     check_dimensions(d_real, d_fake, d_real_logits, d_fake_logits)
-    print(tf.reduce_mean(d_real_logits,keep_dims=False,name="check_loss"))
+    print("the loss mean is %f", tf.reduce_mean(d_real_logits,keep_dims=False,name="check_loss"))
     d_loss_real = -tf.reduce_mean(d_real_logits)
     d_loss_fake = tf.reduce_mean(d_fake_logits)
     d_loss = d_loss_real + d_loss_fake
