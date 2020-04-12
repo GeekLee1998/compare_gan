@@ -19,7 +19,7 @@ options.disc_iters = 1
 D.spectral_norm = False
 
 # Loss and optimizer
-loss.fn = @non_saturating
+loss.fn = @least_squares
 penalty.fn = @no_penalty
 ModularGAN.g_lr = 0.0002
 ModularGAN.g_optimizer_fn = @tf.train.AdamOptimizer
