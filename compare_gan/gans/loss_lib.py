@@ -160,7 +160,7 @@ def robust(d_real_logits, d_fake_logits, d_real=None, d_fake=None):
     d_loss_real = general.lossfun(d_real_logits,alpha,scale)
     d_loss_fake = general.lossfun(d_fake_logits,alpha,scale)
     d_loss = d_loss_real + d_loss_fake
-    g_loss = - general.lossfun(d_fake_logits,alpha,scale)
+    g_loss = general.lossfun(d_fake_logits,alpha,scale)
     #d_loss_shape = d_loss.get_shape()
     #print(d_loss_shape.num_elements())
     return d_loss, d_loss_real, d_loss_fake, g_loss
