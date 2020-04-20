@@ -19,8 +19,8 @@ options.disc_iters = 1
 D.spectral_norm = False
 
 # Loss and optimizer
-loss.fn = @wasserstein
-penalty.fn = @l2_penalty
+loss.fn = @robust
+penalty.fn = @no_penalty
 ModularGAN.g_lr = 0.0002
 ModularGAN.g_optimizer_fn = @tf.train.AdamOptimizer
 tf.train.AdamOptimizer.beta1 = 0.5
