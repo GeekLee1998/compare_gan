@@ -20,7 +20,7 @@ D.spectral_norm = False
 
 # Loss and optimizer
 loss.fn = @robust
-penalty.fn = @dragan_penalty
+penalty.fn = @l2_penalty
 ModularGAN.g_lr = 0.0002
 ModularGAN.g_optimizer_fn = @tf.train.AdamOptimizer
 tf.train.AdamOptimizer.beta1 = 0.5
